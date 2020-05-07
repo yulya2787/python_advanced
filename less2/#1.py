@@ -3,28 +3,46 @@
 классе базовые аттрибуты для автомобилей. Будет плюсом если в
 классах наследниках переопределите методы базового класса.'''
 
+
 class Automobile:
 
-    def __init__(self, t, a, c):
-
+    def __init__(self ,t ,a ,c):
+        self._name = a
         self._top_speed = t
-        self._accelerations = a
         self._carrying_capacity = c
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, m):
+        self._name = m
+
+    def get_top_speed(self):
+        return self._top_speed
+
+    def set_top_speed(self ,m):
+        self._top_speed = m
+
+    def get_carrying_capacity(self):
+        return self._carrying_capacity
+
+    def set_carrying_capacity(self ,m):
+        self._carrying_capacity = m
 
 
 class Car(Automobile):
 
-    def __init__(self, g):
-        self._carrying_capacity = g
-
-    def set_model(self, m):
-        self._model = m
+    def __init__(self, c):
+        self._carrying_capacity = c
 
 
 class Truck(Automobile):
 
-    def __init__(self, v):
+    def __init__(self ,c):
+        self._carrying_capacity = c
 
-        self._carrying_capacity = v
 
+
+Audi = Automobile('Audi', '100', '2')
+print(Audi)
 
