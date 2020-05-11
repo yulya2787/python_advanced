@@ -19,6 +19,10 @@ class Stack:
         return len(self.items)
 
 
+s = Stack()
+s.push('true')
+print(s.pop())
+
 class Queue:
 
     def __init__(self):
@@ -34,24 +38,32 @@ class Queue:
         return len(self.people)
 
 
-s = Stack()
-s.push('hello')
-s.push('true')
-print(s.pop())
+q = Queue()
+q.add('true')
+print(q.size())
 
 
-class Operation:
+class Complex(object):
 
-    def plus(self, x, y):
-        print(x + y)
+    def __init__(self, a, b):
+        '''Creates Complex Number'''
+        self.a = a
+        self.b = b
 
-    def minus(self, x, y):
-        print(x - y)
+    def __str__(self):
+        '''Returns complex number as a string'''
+        return '(%s, %s)' % (self.a, self.b)
+
+    def __add__(self, other):
+        return Complex(self.a + other.a ,
+                       self.b + other.b)
+
+    def __sub__(self ,other):
+        return Complex(self.a - other.a ,
+                       self.b - other.b)
 
 
-
-ob = Operation()
-x = complex(5, 6)
-y = complex(7, 8)
-print(ob.plus(x, y))
-print(ob.minus(x, y))
+c1 = Complex(0, 1)
+c2 = Complex(0, 8)
+print(c1.__add__(c2))
+print(c2.__sub__(c1))
