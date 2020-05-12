@@ -9,9 +9,10 @@ def time_to_do_function(function):
     return wrapped
 
 
-@time_to_do_function
-def func(first, second):
-    return bin(int(first, 2) + int(second, 2))
+n = input("введите число повторений выполнения функции - ")
+for i in n:
+    @time_to_do_function
+    def func(first, second):
+        return bin(int(first, 2) + int(second, 2))
 
-
-print(func("1", "0"))
+    print(func("1", "0"))
