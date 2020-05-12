@@ -1,18 +1,23 @@
 import time
 
-def time_to_do_function(function):
-    def wrapped(*args):
-        start_time = time.process_time()
-        resalt = function(*args)
-        print(time.process_time() - start_time)
-        return resalt
-    return wrapped
+def decorator(num_of_repeats=1):
+    def time_to_do_function(function):
+        def wrapped(*args, **kwargs):
+            dic_result = {}
+            for i in range(num_of_repeats):
+                dic_result[f"result for iteration {i}"] = {}
+                start_time = time.time()
+                end_time = time.time() - start_time
+                func_results = function()
+                dic_result[f"result for iteration {i}"]["function name"] = function.__name__
+                dic_result[f"result for iteration {i}"]["time of function extcution: "] = end_time
+                dic_result[f"result for iteration {i}"]["result of function extcution: "] = func_results
+            return dic_result
+        return wrapped
+    return time_to_do_function
 
+@decorator(5)
+def func():
+    return 100000+300000
 
-n = input("введите число повторений выполнения функции - ")
-for i in n:
-    @time_to_do_function
-    def func(first, second):
-        return bin(int(first, 2) + int(second, 2))
-
-    print(func("1", "0"))
+print(func())
