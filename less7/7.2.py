@@ -76,12 +76,10 @@ class Administrator():
                                          group,
                                          cardID])
 
-
-    def update_student(self,column ,value, cardID):
+    def update_student(self,param ,value, cardID):
         with Dbopen('test.db') as userlist:
             query = userlist.cursor()
-            query.execute(f"UPDATE USER_DICT_FILE SET {column} = {value} WHERE 'cardID' = {cardID}")
-
+            query.execute(f"UPDATE USER_DICT_FILE SET {param} = {value} WHERE 'cardID' = {cardID}")
 
 
 some_student = Students(1)
